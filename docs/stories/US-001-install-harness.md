@@ -98,3 +98,39 @@ users can stop, merge missing files, or back up and override protected paths
 even when the script is piped into Bash, remote-source mode works when the
 script is piped into Bash, and target projects do not receive
 `scripts/install-harness.sh` or this installer story.
+
+## Pilot 02 — Codex-Reported Local Verification (2026-11-14)
+
+**Evidence status:** reported by the Codex Cloud task operator; **not independently
+re-run or archived in this repository**. This section records a handoff, not a
+new verification result or release sign-off.
+
+- Baseline commit: `2e8856af4ffc2a590ed3a689f9a5ba2b15f5960a`.
+- Work classification: maintenance request, normal lane; local installer
+  verification related to US-001.
+- Execution scope: local checkout and disposable temporary target only; no
+  remote installer execution or repository modifications.
+- Task-reported result: **22/22 assertions passed**; Bash syntax exited `0`;
+  expected non-interactive conflict refusal exited `1`.
+- Reported behavior: exact 25-file installed payload, byte-for-byte content
+  matching, installer/story exclusion, conflict refusal without target changes,
+  custom-content preservation on merge, missing-file restoration, repeatable
+  merge, non-writing dry-run on fresh/existing targets, and unchanged checkout.
+- Reported tool versions: Bash 5.2.37, Git 2.52.0, Python 3.12.14.
+- Session-local evidence was reported at
+  `/tmp/harness-pilot02-F2CxVCOF/` (`report.md`, `commands.json`,
+  `assertions.json`, `run.py`, `baseline.json`). These absolute paths
+  belong to the Codex execution environment, are **not durable repository
+  links**, and may no longer exist. They were not available for an independent
+  review in this documentation-only PR.
+- The reported checkout-integrity check is **not** a system-wide write audit.
+
+**Not covered by Pilot 02:** interactive prompts, remote distribution,
+force/override backup behavior, other platforms, fresh-task restoration, or
+application builds/tests.
+
+**Next evidence gate:** obtain or regenerate a reviewable run record (source
+revision, runner, commands, exit codes, machine-checkable assertions and
+artifacts), then have an independent verifier re-run or audit it before
+claiming independently established coverage. The historical US-001 evidence
+above remains distinct from this Codex-reported Pilot 02 execution.
